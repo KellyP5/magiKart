@@ -1,1 +1,10 @@
-﻿RecipeID,ASIN,Name,Type,Cost
+﻿RecipeID,ASIN,Amount,Name,Type,Cost
+1,,1 teaspoon,canola oil,,
+1,,1 egg,egg,,
+1,,,bacon,,
+1,,,mushrooms,,
+1,,,green onions,,
+1,,,white rice,,
+1,,,bean sprouts,,
+1,,,peas,,
+1,,,soy sauce,,
