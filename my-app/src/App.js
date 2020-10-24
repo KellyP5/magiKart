@@ -21,7 +21,7 @@ function App() {
         </a>
         <Button 
           variant="outline-primary"
-          onClick={() => getCart(['123', '456'])}
+          onClick={() => getCart(['B000P7188G', 'B074H7L7WY'])}
           >Primary</Button>{' '}
 
       </header>
