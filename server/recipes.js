@@ -20,8 +20,6 @@ var informationBulk = "https://api.spoonacular.com/recipes/informationBulk?ids="
 var calorieSearch = "https://api.spoonacular.com/recipes/findByNutrients?minCalories=";
 let totalCalories;
 
-console.log('Hello');
-
 //calculates needed calories based on adults, children, and days
 function calcCalories(adultMale, adultFemale, child, days) {
     totalCalories = (maleCalories * days * adultMale) + 
@@ -46,11 +44,7 @@ function getRecipes() {
             getIngredients();
         })
         .catch(function (error) {
-            //handle error
             console.log(error);
-        })
-        .then(function () {
-            //always executed
         });
 }
 
@@ -69,11 +63,7 @@ function getIngredients() {
         printAllIngredients();
     })
     .catch(function (error) {
-        //handle error
         console.log(error);
-    })
-    .then(function () {
-        //always executed
     });
 }
 
@@ -89,11 +79,7 @@ function printAllIngredients() {
         console.log(response);
     })
     .catch(function (error) {
-        //handle error
         console.log(error);
-    })
-    .then(function () {
-        //always executed
     });
 }
 
