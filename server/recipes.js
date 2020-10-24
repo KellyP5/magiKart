@@ -6,8 +6,6 @@ get Recipe information bulk
 https://api.spoonacular.com/recipes/informationBulk?ids=715538,716429
 **/
 
-//const { https } = require("follow-redirects");
-
 const maleCalories = 1800;
 const femaleCalories = 1200;
 const childCalories = 1000;
@@ -32,7 +30,8 @@ function calcCalories(adultMale, adultFemale, child, days) {
     console.log(totalCalories);
 };
 
-//
+//Spoontacular API call to grab Recipe ID's
+// Calls getIngredients 
 function getRecipes() {
     axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=2&apiKey=274b0da100c3479bb8977f128718799f')
         .then(function (response) {
@@ -55,6 +54,7 @@ function getRecipes() {
         });
 }
 
+//Spoontacular EPI call to grab ingredients of getRecipes() ID's
 function getIngredients() {
     axios.get(informationBulk)
     .then(function (response) {
@@ -77,6 +77,9 @@ function getIngredients() {
     });
 }
 
+
+//Prints ingredients from getIngredients()
+// Does kroger API call 
 function printAllIngredients() {
     ingredientList.forEach(element => {
         //console.log(element);
@@ -94,8 +97,5 @@ function printAllIngredients() {
     });
 }
 
-
-
+//Uncomment to perform all of the API calls
 //getRecipes();
-
-calcCalories();
