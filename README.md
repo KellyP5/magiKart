@@ -4,12 +4,15 @@
 Public IP Address: 35.202.15.44</br>
 Connection Name: big-station-266218:us-central1:recipe</br>
 
+# Requirements # 
+Kroger Account<br>
+Local Hosting Server
+
 # Spoontacular API
 First API Call Documentation:
 https://spoonacular.com/food-api/docs#Search-Recipes-Complex<br><br>
   <b>First API call, only extracts Recipe ID at the moment</b><br>
-  axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=2&apiKey=' + spoonKey)<br><br><br><br>
-
+  axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=2&apiKey=' + spoonKey)<br><br>
 
 Second API Call Documentation: 
 https://spoonacular.com/food-api/docs#Get-Recipe-Information-Bulk<br><br>
