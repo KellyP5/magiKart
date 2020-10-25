@@ -18,7 +18,7 @@ var allIngredients;
 var productId;
 var productIds;
 var productIdArr = [""];
-const krogerGet = "https://api.kroger.com/v1/products?filter.term=";
+const krogerGet = 'https://cors-anywhere.herokuapp.com/' + "https://api.kroger.com/v1/products?filter.term=";
 var informationBulk = "https://api.spoonacular.com/recipes/informationBulk?ids=";
 var calorieSearch = "https://api.spoonacular.com/recipes/findByNutrients?minCalories=";
 let totalCalories;
@@ -122,4 +122,4 @@ function printAllIngredients() {
 
 
 //Uncomment to perform all of the API calls
-//getRecipes();
+getRecipes();
