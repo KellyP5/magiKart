@@ -141,7 +141,7 @@ class App extends Component {
 
 var ingredientList = [""];
 var productId;
-const krogerGet = 'https://cors-anywhere.herokuapp.com/' + "https://api.kroger.com/v1/products?filter.term="
+const krogerGet = 'https://rocky-tor-60272.herokuapp.com/' + "https://api.kroger.com/v1/products?filter.term="
 const krogerKey = "&access_token=eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiIsImV4cCI6MTYwMzU5Nzg5MCwiaWF0IjoxNjAzNTk2MDg1LCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6ImU2ZDdmNjVkLWJjMjAtNTkzMi05NjNlLTRlNDQyOWM0NzBiMSIsInNjb3BlIjoicHJvZHVjdC5jb21wYWN0IiwiYXV0aEF0IjoxNjAzNTk2MDkwOTM1NjE0MTI2LCJwZmN4IjoidXJuOmtyb2dlcmNvOnByb2ZpbGU6c2hvcHBlcjoxOTczNDBkNy0wYTQ1LTQzY2ItOTA3ZS04NDQ1ZDgyODk0ODEiLCJhenAiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiJ9.J5poynhvUhVxSTuLccOWdl3Qv9ygUFaQYbc0VF74Us_qNUyPG661i5ORGIRaTq-4GDGR3PvoJrtjuyBhjjTDpZWrCVUVlnTG0mZBXkdfF80jhSC9Eu2m_xngbiiCxQ2VSrwls3YMgluCfQIosG00__1S1vrZsqOCa6C_xKjMeAq5SDCXKXeKLlRiFjvFyxU4IexQPFoxT1rKyLt_pQhvZxL1g0Ul1HVAVhekriGjBs-kCxJrVpM9sBEO9UXjI-O6pU0ebzk6pRwy3-rsYlIgFYO-rjbdCZ3dsdOrlOtHiF4CJQDBd43VWJFL1qYCMrtS-8bb1gmAytMwm_2DiQGJ_A";
 
 //Prints ingredients from getIngredients()
@@ -154,7 +154,7 @@ function pushIngredients() {
           var krogerData = JSON.stringify({"items":[{"quantity":1,"upc":productId}]});
           var krogerPutConfig = {
           method: 'put',
-          url: 'https://cors-anywhere.herokuapp.com/' + 'https://api.kroger.com/v1/cart/add',
+          url: 'https://rocky-tor-60272.herokuapp.com/' + 'https://api.kroger.com/v1/cart/add',
           headers: { 
               'Content-Type': 'application/json', 
               'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiIsImV4cCI6MTYwMzU5NzI0NywiaWF0IjoxNjAzNTk1NDQyLCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6ImU2ZDdmNjVkLWJjMjAtNTkzMi05NjNlLTRlNDQyOWM0NzBiMSIsInNjb3BlIjoiY2FydC5iYXNpYzp3cml0ZSIsImF1dGhBdCI6MTYwMzU5NTQ0NzIwOTAwMDM4NCwicGZjeCI6InVybjprcm9nZXJjbzpwcm9maWxlOnNob3BwZXI6MTk3MzQwZDctMGE0NS00M2NiLTkwN2UtODQ0NWQ4Mjg5NDgxIiwiYXpwIjoicmVjaXBlcy05NTMzNTlkNDJlY2I0MDc3NTM4NThkYTQzOTE1Mzg4Njg1ODUyOTM1MjkyNDAwMDAxODIifQ.HgHz-GNAcz9rO4T-O5U51zlvjKcA7ITzoIDqXtkI4yy4GOkZxmboYh903Xosnu1NMeiA_ne-DhgAyBI3_86CJzoyvqMDZAIK0YAJNdjGU5HmnAR6hu6VnvXNS8vU5-42ky63yobs5vBL6uq2m71Gcupvx0BgUWO4Tdf-f5L6nlt0Z2_PeDw4uCD9BnI8ocdZsAAERtL3KZdiQ0eTyhqpYQv3lFuvBlMxYGgUy6-0tAJtN6bllG89wSZ1NerXYmVGxcATKpEXizDNRr_vdDTMvYPRFiGJlCgQZjaOBqlTdvrPzt9BcwT4gWFha-JbcdAiv1YxLsTQGyAfCenkOzoKfA', 
