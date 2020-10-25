@@ -57,7 +57,7 @@ class InputForm extends Component {
                 </Form.Group>
                 <Divider horizontal></Divider>
                 <Form.Group style={{margin: "auto", width: "50%"}}>
-                    <Form.Button>
+                    <Form.Button onClick={this.props.onFormSubmit}>
                         Submit
                     </Form.Button>
                     <Form.Button>

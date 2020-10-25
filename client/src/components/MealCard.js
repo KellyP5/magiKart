@@ -1,16 +1,29 @@
-import {Card, Divider, Button, Icon, Portal, Item, List, Container, Image} from 'semantic-ui-react';
+import {Card, Divider, Button, Icon, Portal, List, Container, Image} from 'semantic-ui-react';
 import {Component} from 'react';
 
 class MealCard extends Component {
     constructor(props){
         super(props)
         this.state = {
-            type: this.props.meal.type,
+            type: "",
             name: this.props.meal.name,
             description: this.props.meal.description,
             ingredients: this.props.meal.ingredients,
             image: this.props.meal.image,
-            recipeSteps: ["Do stuff"]
+            recipeSteps: this.props.meal.steps 
+        }
+    }
+    componentDidMount = () => {
+        if(this.props.meal){
+            this.setState(prevState => ({
+                ...prevState,
+                type: this.props.meal.type,
+                name: this.props.meal.name,
+                description: this.props.meal.description,
+                ingredients: this.props.meal.ingredients,
+                image: this.props.meal.image,
+                recipeSteps: this.props.meal.steps 
+            }))
         }
     }
 
