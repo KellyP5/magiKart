@@ -60,7 +60,7 @@ class InputForm extends Component {
                     <Form.Button onClick={this.props.onFormSubmit}>
                         Submit
                     </Form.Button>
-                    <Form.Button>
+                    <Form.Button onClick={this.props.onFormCheckout}>
                         Checkout
                     </Form.Button>
                 </Form.Group>
