@@ -15,7 +15,8 @@ var recipeIds;
 var ingredients;
 var ingredientList = [""];
 var allIngredients;
-var krogerGet = "https://api.kroger.com/v1/products?filter.term=fat%20free%20milk&access_token=eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiIsImV4cCI6MTYwMzU4MzkxNSwiaWF0IjoxNjAzNTgyMTEwLCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6IjNmYmE1MzVlLWM5OGItNTA5ZC1iMmQxLTJjMjI1N2EwNWM3YiIsInNjb3BlIjoicHJvZHVjdC5jb21wYWN0IiwiYXV0aEF0IjoxNjAzNTgyMTE1OTgwNTQwNzUxLCJhenAiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiJ9.BPJg-KyZJ9Uvw4YEv1tnfExrZ_EW2j5A0UeWC2uinmg9LrLjgJ6Utm0n-9HMBYMSiBWRE2R4tTw5fEtWpqqd2Ud5uKBub6kw3PA_Jbjbe44RuS-vRjeKh4Mj6bs7M5VQlo9ZibwdIXa5axV0dMVgr7K5sq4x-hrw-tcdlDZZMV8-uzOQDBHpyhJv2LmLK9Agn1Ck91Lyd7sOcP1C1Iy1WprXPY3Mz5qxZUpBY4TWZNrW5tDRrruqmjMLI5bEW4gd_TSnpqjkY9EMa5lWq94CxAd6D-MhhrLUxeAuzhH0KE5SWuUN8E2eEZqNyJ4za3Ap-6Sg54aNRrMxSHu6T5Z-dw"
+const krogerGet = "https://api.kroger.com/v1/products?filter.term="
+const krogerKey = "&access_token=eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYXBpLmtyb2dlci5jb20vdjEvLndlbGwta25vd24vandrcy5qc29uIiwia2lkIjoiWjRGZDNtc2tJSDg4aXJ0N0xCNWM2Zz09IiwidHlwIjoiSldUIn0.eyJhdWQiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiIsImV4cCI6MTYwMzU4NjIxMSwiaWF0IjoxNjAzNTg0NDA2LCJpc3MiOiJhcGkua3JvZ2VyLmNvbSIsInN1YiI6IjNmYmE1MzVlLWM5OGItNTA5ZC1iMmQxLTJjMjI1N2EwNWM3YiIsInNjb3BlIjoicHJvZHVjdC5jb21wYWN0IiwiYXV0aEF0IjoxNjAzNTg0NDExNzM3NjUyNzQzLCJhenAiOiJyZWNpcGVzLTk1MzM1OWQ0MmVjYjQwNzc1Mzg1OGRhNDM5MTUzODg2ODU4NTI5MzUyOTI0MDAwMDE4MiJ9.VzoWKibUWc9oleHHGZ_Nfi8Du_s9LjdAGrAeFbuRgVocsLgd6iPTF2xxcNegPbSoG-bidB7wUq82xGoUvGGpMpPgnsQU3fYEuvxYUo8g1Yp4eIxOxXh2fIElsqGMPYBA8_lo-KUhLYWPvaTlz6kApOvcM7QNKuQKtgmYHCcwINFAn2wSkiiTeypPm-rLuBWdKX5x7vuwXyVTJeGKW0r_TXHYXZAJNel8H11m3UnhH9aO0rPe7J9XHv_GANwQzo2t_PlAjwVG280OaDWBKV7iV4dh6LQI0THL0ZEiaYmTYDy1AaB_2crd8brAqXQORIZtueUQEmx0NJqpOSM9oT76_A"
 var informationBulk = "https://api.spoonacular.com/recipes/informationBulk?ids=";
 var calorieSearch = "https://api.spoonacular.com/recipes/findByNutrients?minCalories=";
 let totalCalories;
@@ -72,14 +73,14 @@ function getIngredients() {
 // Does kroger API call 
 function printAllIngredients() {
     ingredientList.forEach(element => {
-        //console.log(element);
-    });
-    axios.get(krogerGet)
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
+        console.log(krogerGet + element + krogerKey);
+        axios.get(krogerGet + element + krogerKey)
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     });
 }
 
