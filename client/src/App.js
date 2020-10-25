@@ -7,8 +7,6 @@ import {Grid, Container, Image, Divider} from 'semantic-ui-react'
 import InputForm from './components/InputForm'
 import Results from './components/Results'
 
-var ingredients = []
-
 class App extends Component {
   constructor(){
     super()
@@ -81,7 +79,7 @@ class App extends Component {
     const krogerAuthentication = 'https://api.kroger.com/v1/connect/oauth2/authorize?scope=product.compact&response_type=code&client_id=recipes-953359d42ecb407753858da4391538868585293529240000182&redirect_uri=http://127.0.0.1:5500/index.html';
     const krogerGet = 'https://sheltered-fortress-21023.herokuapp.com/' + "https://api.kroger.com/v1/products?filter.term="
     const krogerKey = "&access_token=" + krogerAuthentication;
-    console.log(this.state.ingredients)
+    var ingredients = this.state.ingredients
     ingredients.forEach(element => {
         axios.get(krogerGet + element + krogerKey)
         .then(function (response) {
