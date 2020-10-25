@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getRecipes }  from './recipes.js';
 import logo from './logo.png';
 import './App.css';
 import {Component} from 'react';
@@ -11,92 +12,25 @@ class App extends Component {
     super()
     this.spoonKey = "f47145e1238d4cb89bf99a85fe1d18ab";
     this.state = {
-      recipeIds: [],
-      recipes: []
+      recipes: [],
+      items: [],
+      numMeals: 12,
     }
+    this.update = 0;
   }
 
-  idsCallback = (response) => {
-    let recipes = response.data.results;
-    this.setState(prevState => ({
-      ...prevState, recipeIds: recipes.map(obj => obj.id)}), 
-      () => this.getRecipesPrimaryData());
-  }
-
-  primaryDataCallback = (response) => {
-    var recipes = []
-    let recipeData = response.data;
-    recipeData.forEach(recipe_data => {
-      let recipe = {};
-      recipe.id = recipe_data.id;
-      recipe.name = recipe_data.title;
-      recipe.image = recipe_data.image;
-      recipe.sourceUrl = recipe_data.sourceUrl;
-      recipe.steps = []
-      var ingredients = [];
-      recipe_data.extendedIngredients.forEach(ingredient => {
-        ingredients.push(ingredient.original);
-      });
-      recipe.ingredients = ingredients;
-      recipes.push(recipe)
+  componentDidMount = () => {
+    this.recipePool = getRecipes();
+    var recipesDict = {}
+    var recipes = this.recipePool.slice(0, 9)
+    recipes.forEach((recipe)=>{
+      const id = recipe.id
+      recipesDict[id] = recipe 
     })
     this.setState(prevState => ({
       ...prevState,
-      recipes: recipes
-    }), () => console.log(this.state))
-  }
-
-  secondaryDataCallback = (response, recipes, index) => {
-    let instructions_data = response.data
-    let recipe = recipes[index];
-    console.log(instructions_data)
-    if(!instructions_data){
-      recipe.steps = []
-    } else {
-      var steps = [];
-      instructions_data.forEach(instruction => {
-        steps.push(instruction.step);
-      })
-      recipe.steps = steps;
-    }
-    recipes[index] = recipe
-    this.setState(prevState => ({
-      ...prevState,
-      recipes: recipes 
-    }));           
-  }
-
-  getRecipeIds = () => {
-    axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=9&apiKey=' + this.spoonKey)
-        .then(this.idsCallback)
-        .catch(function (error) {
-            console.log(error);
-        });
-  }
-
-  getRecipesPrimaryData = () => {
-    let bulkRequest = "https://api.spoonacular.com/recipes/informationBulk?ids=";
-    const recipeIds = this.state.recipeIds;
-    recipeIds.forEach(id => {
-      bulkRequest += id + "," 
-    })
-    bulkRequest += '&apiKey=' + this.spoonKey;
-    axios.get(bulkRequest)
-      .then(this.primaryDataCallback)
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  getRecipesSecondaryData = () => {
-    var recipes = this.state.recipes;
-    recipes.forEach((recipe, index) => {
-      axios.get("https://api.spoonacular.com/recipes/" + recipe.id + "/analyzedInstructions?&apiKey=" + this.spoonKey)
-        .then(response => this.secondaryDataCallback(response, recipes, index))
-        .catch(function (error) {
-          console.log(error);
-        });
-    })
+      recipes: recipesDict
+    }));
   }
 
   onFormChange = (state) => {
@@ -107,8 +41,28 @@ class App extends Component {
   }
 
   onFormSubmit = () => {
-    this.getRecipeIds();
-    setTimeout(this.getRecipesSecondaryData, 2000);
+    this.update += 1;
+    var indexes = new Set()
+    for(var i = 0; i < 10; i++){
+      var rand = Math.floor(Math.random() * Math.floor(this.recipePool.length))
+      indexes.add(rand)
+    }
+    var recipes = {}
+    var ingredients = []
+    indexes.forEach((number, index) => {
+      var recipe = this.recipePool[number];
+      console.log(recipe)
+      recipes[recipe.id] = recipe;
+      recipe.ingredients.forEach((ingredient, index) => {
+        ingredients.push(ingredient.simple);
+      })
+    })
+    this.setState(prevState => ({
+      ...prevState,
+      recipes: recipes,
+      ingredients: ingredients,
+      update: !prevState.update
+    }));
   }
 
   getContainerDimensions = () => {
@@ -128,7 +82,7 @@ class App extends Component {
           </Grid.Column>
           <Grid.Column>
             <div ref={el => this.container = el} style={{overflowY: 'auto', overflowX: 'hidden', maxHeight: 700}}>
-              <Results meals={this.state.recipes} getDims={this.getContainerDimensions}/>
+              <Results meals={this.state.recipes} key={this.update} getDims={this.getContainerDimensions}/>
             </div>
           </Grid.Column>
         </Grid>

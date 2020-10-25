@@ -36,7 +36,7 @@ class MealCard extends Component {
         ingredients.forEach((ingredient, index) => {
             ingredientsListItems.push(
                 <List.Item>
-                    {ingredient}
+                    {ingredient.full}
                 </List.Item>    
             )
         })

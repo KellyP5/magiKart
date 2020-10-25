@@ -6,7 +6,14 @@ class Results extends Component {
     constructor(props){
         super(props)
         this.state = {
-            meals: this.props.meals
+            meals: this.props.meals,
+            update: this.props.update
+        }
+    }
+
+    componentDidUpdate(prevProps){
+        if(this.props !== prevProps){
+            this.setState({meals: this.props.meals})
         }
     }
 
@@ -78,7 +85,13 @@ class Results extends Component {
     }
 
     render(){
-        const meals = this.props.meals;
+        const meals = []
+        const mealsDict = this.state.meals
+
+        for(const key in mealsDict){
+            meals.push(mealsDict[key])
+        }
+        console.log(meals)
         const mealplan = [];
         while(meals.length) mealplan.push(meals.splice(0, 3));
         var rows = [];
