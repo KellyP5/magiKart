@@ -24,3 +24,6 @@ First API Call:
 
 Second API Call:
 "https://api.kroger.com/v1/cart/add"
+
+# Heroku Issue - Need to host our own server
+https://github.com/Rob--W/cors-anywhere
