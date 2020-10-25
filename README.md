@@ -6,16 +6,16 @@ Connection Name: big-station-266218:us-central1:recipe</br>
 
 # Spoontacular API
 First API Call Documentation:
-https://spoonacular.com/food-api/docs#Search-Recipes-Complex
-  <b>First API call, only extracts Recipe ID at the moment</b>
-  axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=2&apiKey=' + spoonKey)
+https://spoonacular.com/food-api/docs#Search-Recipes-Complex<br><br>
+  <b>First API call, only extracts Recipe ID at the moment</b><br>
+  axios.get('https://api.spoonacular.com/recipes/complexSearch?&number=2&apiKey=' + spoonKey)<br><br><br><br>
 
 
 Second API Call Documentation: 
-https://spoonacular.com/food-api/docs#Get-Recipe-Information-Bulk
-   <b>Second API call to get detailed recipe information</b>
-   axios.get(informationBulk)
-   <i>information bulk = String of recipeID's from first API call</i>
+https://spoonacular.com/food-api/docs#Get-Recipe-Information-Bulk<br><br>
+   <b>Second API call to get detailed recipe information</b><br>
+   axios.get(informationBulk)<br>
+   <i>information bulk = String of recipeID's from first API call</i><br>
 
 
 # Kroger API
