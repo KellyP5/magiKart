@@ -1,3 +1,5 @@
+![Magikart](https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/263/011/datas/medium.png)
+
 [![Magikart](http://img.youtube.com/vi/rPkVlPrkrTs/0.jpg)](http://www.youtube.com/watch?v=rPkVlPrkrTs "")
 
 ## Inspiration
